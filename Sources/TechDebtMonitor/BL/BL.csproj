@@ -52,10 +52,10 @@
   <ItemGroup>
     <Compile Include="RepositoryProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tags\CSharpTechDebtFinder.cs" />
+    <Compile Include="Tags\CSharpTagFinder.cs" />
     <Compile Include="Tags\ITagFinder.cs" />
     <Compile Include="Tags\TagInfo.cs" />
-    <Compile Include="Tags\TechDebtFinderFactory.cs" />
+    <Compile Include="Tags\TagFinderFactory.cs" />
     <Compile Include="CommitProcessor.cs" />
   </ItemGroup>
   <ItemGroup>

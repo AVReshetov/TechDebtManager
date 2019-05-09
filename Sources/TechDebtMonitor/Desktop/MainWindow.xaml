@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Desktop"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Tech Debt Monitor"
     Width="800"
     Height="450"
     mc:Ignorable="d">
@@ -21,15 +21,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel IsEnabled="False" Orientation="Horizontal">
-            <TextBlock Text="Tag: " />
-            <TextBox Text="{Binding Tag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Text="Repository: " />
-            <Separator />
-            <TextBox Text="{Binding Repository, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Content="Browse" />
-        </StackPanel>
+        <Menu>
+            <MenuItem Command="{Binding SetTagCommand}" Header="Tag" />
+            <MenuItem Command="{Binding SetRepositoryCommand}" Header="Repository" />
+            <MenuItem Command="{Binding RefreshCommand}" Header="Refresh" />
+        </Menu>
         <ListBox Grid.Row="1" ItemsSource="{Binding TechDebts}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="core:TechDebt">
@@ -41,5 +39,14 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StatusBar Grid.Row="2">
+            <StackPanel IsEnabled="False" Orientation="Horizontal">
+                <TextBlock Margin="2" Text="Tag: " />
+                <TextBox Margin="2" Text="{Binding Tag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
+                <TextBlock Margin="2" Text="Repository: " />
+                <TextBox Margin="2" Text="{Binding Repository, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+        </StatusBar>
     </Grid>
 </Window>
